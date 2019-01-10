@@ -1,0 +1,127 @@
+$bg-color:#B4F2AF;
+$primary-color:white;
+
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: $bg-color;
+    
+    h2{
+        padding: 1em;
+        text-align: center;
+    }
+ }
+
+.container{
+    background:$primary-color;
+    height:-webkit-fill-available;
+    padding: 0 5em;    
+    
+    .input-group{
+        padding: 2em 0;
+        .form-control:focus{
+            box-shadow: 0px 1px 10px 0rem rgba(0,123,255,.25) !important;
+        }
+    }
+
+
+}
+.cdk-virtual-scroll-content-wrapper{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-auto-flow: row dense !important;
+    grid-gap: 0.5rem !important;
+    
+}
+.scroll-viewport {
+  height: 70vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+app-news{
+  height: auto;
+  padding: 0 !important;
+  border: none !important;
+  
+  &:nth-child(odd){
+    grid-column-start: 1;
+  }
+  &:nth-child(even){
+    grid-column-start: 2;      
+  }
+    
+  
+  .card {
+    border-radius: 2px;
+    margin: 1em;
+    position: relative;
+    box-shadow: 0 1px 3px #c9f6c5, 0 1px 2px #c9f6c5;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    padding: 0 !important;
+    
+    .card-body{
+        
+        .card-title{
+            color: #020801;
+        }
+        .card-subtitle{
+            color: #29b71e !important;
+            font-size: 0.85rem;
+        }
+        .card-text{
+            font-size: 0.75rem;
+            margin-bottom: 1em;
+        }
+        .card-link{
+            margin-top: 15px;
+            font-size: 0.80rem;
+            color:#152a40;
+            font-weight: bold;
+            
+            &::after{
+                font-family: "Font Awesome\ 5 Free";
+                content: "\f005\f005\f5c0";
+                margin-left: 3px;
+                position: absolute;
+                font-size: 1.2em;
+            }
+        }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: lighten(#888,20%); 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+  
+ 
+
+@media screen and (max-width: 600px) {
+    .container{
+        padding: 1rem !important;
+    }
+    .cdk-virtual-scroll-content-wrapper{
+        grid-template-columns: 1fr !important;
+    }
+    app-news{
+        grid-column-start: 1 !important;
+    }
+}

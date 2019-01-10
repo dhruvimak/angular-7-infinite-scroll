@@ -1,0 +1,28 @@
+<h2>Search your news here</h2>
+
+<div class="container">
+
+  <div class="input-group">
+
+    <input type="text" class="form-control" placeholder="search..." name="search" [(ngModel)]="search" (keyup.enter)="onSerach()">
+
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+    </div>
+
+  </div>
+
+  <div *ngIf="error; else show" class="list-group-item list-group-item-warning">
+    <p>No News to display !! Please make a search.</p>
+  </div>
+
+  <ng-template #show>
+    <cdk-virtual-scroll-viewport itemSize="100" class="scroll-viewport" (scrolledIndexChange)="nextBatch($event)">
+      <app-news *cdkVirtualFor="let item of items;let i=index;" [news]="item" class="card">{{ i+1 }}</app-news>
+    </cdk-virtual-scroll-viewport>
+  </ng-template>
+  <div *ngIf="end" class="list-group-item list-group-item-info">
+    <p>No more News to display !!</p>
+  </div>
+
+</div>

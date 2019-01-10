@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><ng-content></ng-content>
+        {{ news.source.name | titlecase }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ news.title }}</h6>
+      <p class="card-text">{{ news.description }}</p>
+      <a class="card-link">{{ news.author }}</a>
+    </div>
+  </div>
